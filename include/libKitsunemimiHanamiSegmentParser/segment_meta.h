@@ -47,7 +47,9 @@ struct SegmentMeta
 {
     uint32_t version = 0;
     SegmentType segmentType = UNDEFINED_SEGMENT_TYPE;
-    std::map<std::string, std::any> settings;
+    uint32_t maxSynapseSections = 0;
+    uint32_t synapseSegmentation = 0;
+    float signNeg = 0.0;
     std::vector<BrickMeta> bricks;
 };
 

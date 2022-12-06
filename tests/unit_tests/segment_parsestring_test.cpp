@@ -25,7 +25,6 @@ Segment_ParseString_Test::parseString_test()
                       "    max_synapse_sections: 100000\n"
                       "    synapse_segmentation: 10\n"
                       "    sign_neg: 0.5\n"
-                      "    potential_overflow: 1.0\n"
                       "        \n"
                       "bricks:\n"
                       "    1,1,1\n"
@@ -50,20 +49,9 @@ Segment_ParseString_Test::parseString_test()
     TEST_EQUAL(result.version, 1);
     TEST_EQUAL(result.segmentType, DYNAMIC_SEGMENT_TYPE);
 
-    TEST_EQUAL(result.settings.size(), 4);
-
-    std::map<std::string, std::any>::iterator it = result.settings.begin();
-    TEST_EQUAL(it->first, "max_synapse_sections");
-    TEST_EQUAL(std::any_cast<long>(it->second), 100000);
-    it++;
-    TEST_EQUAL(it->first, "potential_overflow");
-    TEST_EQUAL(std::any_cast<double>(it->second), 1.0);
-    it++;
-    TEST_EQUAL(it->first, "sign_neg");
-    TEST_EQUAL(std::any_cast<double>(it->second), 0.5);
-    it++;
-    TEST_EQUAL(it->first, "synapse_segmentation");
-    TEST_EQUAL(std::any_cast<long>(it->second), 10);
+    TEST_EQUAL(result.maxSynapseSections, 100000);
+    TEST_EQUAL(result.synapseSegmentation, 10);
+    TEST_EQUAL(result.signNeg, 0.5);
 
     TEST_EQUAL(result.bricks.size(), 3);
 

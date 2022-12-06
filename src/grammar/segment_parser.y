@@ -117,26 +117,62 @@ segment_type:
 settings:
     settings "identifier" ":" "float" linebreaks
     {
-        std::any val = $4;
-        driver.output->settings.emplace($2, val);
+        if($2 == "sign_neg")
+        {
+            driver.output->signNeg = $4;
+        }
+        else
+        {
+            driver.error(yyla.location, "unkown settings-field '" + $2 + "'");
+            return 1;
+        }
     }
 |
     settings "identifier" ":" "number" linebreaks
     {
-        std::any val = $4;
-        driver.output->settings.emplace($2, val);
+        if($2 == "synapse_segmentation")
+        {
+            driver.output->synapseSegmentation = $4;
+        }
+        else if($2 == "max_synapse_sections")
+        {
+            driver.output->maxSynapseSections = $4;
+        }
+        else
+        {
+            driver.error(yyla.location, "unkown settings-field '" + $2 + "'");
+            return 1;
+        }
     }
 |
     "identifier" ":" "float" linebreaks
     {
-        std::any val = $3;
-        driver.output->settings.emplace($1, val);
+        if($1 == "sign_neg")
+        {
+            driver.output->signNeg = $3;
+        }
+        else
+        {
+            driver.error(yyla.location, "unkown settings-field '" + $1 + "'");
+            return 1;
+        }
     }
 |
     "identifier" ":" "number" linebreaks
     {
-        std::any val = $3;
-        driver.output->settings.emplace($1, val);
+        if($1 == "synapse_segmentation")
+        {
+            driver.output->synapseSegmentation = $3;
+        }
+        else if($1 == "max_synapse_sections")
+        {
+            driver.output->maxSynapseSections = $3;
+        }
+        else
+        {
+            driver.error(yyla.location, "unkown settings-field '" + $1 + "'");
+            return 1;
+        }
     }
 
 bricks:
