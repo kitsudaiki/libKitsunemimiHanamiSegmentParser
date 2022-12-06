@@ -98,13 +98,13 @@ YY_DECL;
 //         number_of_neurons: 5
 
 startpoint:
-    "version1" linebreaks segment_type "settings" "linebreak" settings "bricks" "linebreak" bricks
+    "version1" linebreaks segment_type "settings" ":" linebreaks settings "bricks" ":" linebreaks bricks
     {
-
+        driver.output->version = 1;
     }
 
 segment_type:
-    "segment_type" ":" "identifier" "linebreak"
+    "segment_type" ":" "identifier" linebreaks
     {
         if($3 == "dynamic_segment") {
             driver.output->segmentType = DYNAMIC_SEGMENT_TYPE;
@@ -115,45 +115,45 @@ segment_type:
     }
 
 settings:
-    settings "identifier" ":" "float" "linebreak"
+    settings "identifier" ":" "float" linebreaks
     {
         std::any val = $4;
         driver.output->settings.emplace($2, val);
     }
 |
-    settings "identifier" ":" "number" "linebreak"
+    settings "identifier" ":" "number" linebreaks
     {
         std::any val = $4;
         driver.output->settings.emplace($2, val);
     }
 |
-    "identifier" ":" "float" "linebreak"
+    "identifier" ":" "float" linebreaks
     {
         std::any val = $3;
         driver.output->settings.emplace($1, val);
     }
 |
-    "identifier" ":" "number" "linebreak"
+    "identifier" ":" "number" linebreaks
     {
         std::any val = $3;
         driver.output->settings.emplace($1, val);
     }
 
 bricks:
-    bricks position "linebreak" brick_settings
+    bricks position linebreaks brick_settings
     {
         $4.position = $2;
         driver.output->bricks.push_back($4);
     }
 |
-    position "linebreak" brick_settings
+    position linebreaks brick_settings
     {
         $3.position = $1;
         driver.output->bricks.push_back($3);
     }
 
 brick_settings:
-    brick_settings "identifier" ":" "identifier" "linebreak"
+    brick_settings "identifier" ":" "identifier" linebreaks
     {
         if($2 == "input")
         {
@@ -174,7 +174,7 @@ brick_settings:
         $$ = $1;
     }
 |
-    brick_settings "identifier" ":" "number" "linebreak"
+    brick_settings "identifier" ":" "number" linebreaks
     {
         if($2 == "number_of_neurons")
         {
@@ -189,7 +189,7 @@ brick_settings:
         $$ = $1;
     }
 |
-    "identifier" ":" "identifier" "linebreak"
+    "identifier" ":" "identifier" linebreaks
     {
         Kitsunemimi::Hanami::BrickMeta brickMeta;
 
@@ -212,7 +212,7 @@ brick_settings:
         $$ = brickMeta;
     }
 |
-    "identifier" ":" "number" "linebreak"
+    "identifier" ":" "number" linebreaks
     {
         Kitsunemimi::Hanami::BrickMeta brickMeta;
 

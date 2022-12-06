@@ -22,7 +22,7 @@ namespace Hanami
  *
  * @return true, if successful, else false
  */
-inline bool
+bool
 parseSegment(SegmentMeta* result,
              const std::string &input,
              ErrorContainer &error)
