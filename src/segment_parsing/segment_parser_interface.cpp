@@ -69,7 +69,7 @@ SegmentParserInterface::parse(SegmentMeta* result,
                               const std::string &inputString,
                               ErrorContainer &error)
 {
-    m_output = result;
+    output = result;
 
     std::lock_guard<std::mutex> guard(m_lock);
 
@@ -79,8 +79,6 @@ SegmentParserInterface::parse(SegmentMeta* result,
     int parserResult = 0;
     Kitsunemimi::Hanami::SegmentParser parser(*this);
 
-    // 1. dry-run to check syntax
-    dryRun = true;
     this->scan_begin(inputString);
     parserResult = parser.parse();
     this->scan_end();

@@ -12,15 +12,45 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <any>
 
 #include <libKitsunemimiCommon/logger.h>
+#include <libKitsunemimiHanamiCommon/structs.h>
 
 namespace Kitsunemimi
 {
 namespace Hanami
 {
 
-struct SegmentMeta;
+enum SegmentType
+{
+    UNDEFINED_SEGMENT_TYPE = 0,
+    DYNAMIC_SEGMENT_TYPE = 1,
+};
+
+enum BrickType
+{
+    CENTRAL_BRICK_TYPE = 0,
+    INPUT_BRICK_TYPE = 1,
+    OUTPUT_BRICK_TYPE = 2,
+};
+
+struct BrickMeta
+{
+    Position position;
+    std::string name = "";
+    BrickType type = CENTRAL_BRICK_TYPE;
+    uint64_t numberOfNeurons = 0;
+};
+
+struct SegmentMeta
+{
+    uint32_t version = 0;
+    SegmentType segmentType = UNDEFINED_SEGMENT_TYPE;
+    std::map<std::string, std::any> settings;
+    std::vector<BrickMeta> bricks;
+};
+
 
 bool
 parseSegment(SegmentMeta* result,

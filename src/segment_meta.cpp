@@ -14,11 +14,6 @@ namespace Kitsunemimi
 namespace Hanami
 {
 
-struct SegmentMeta
-{
-
-};
-
 /**
  * @brief convert a segment-formated string into a segment-object-tree
  *
@@ -27,7 +22,7 @@ struct SegmentMeta
  *
  * @return true, if successful, else false
  */
-bool
+inline bool
 parseSegment(SegmentMeta* result,
              const std::string &input,
              ErrorContainer &error)

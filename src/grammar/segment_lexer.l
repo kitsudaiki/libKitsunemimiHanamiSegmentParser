@@ -48,17 +48,14 @@ blank [ \t]
 %}
 
 {blank}+  segmentloc.step();
-[\n]      {segmentloc.lines(1); segmentloc.step(); }
-"{"       return Kitsunemimi::Hanami::SegmentParser::make_EXPRESTART (segmentloc);
-"}"       return Kitsunemimi::Hanami::SegmentParser::make_EXPREEND (segmentloc);
-"["       return Kitsunemimi::Hanami::SegmentParser::make_BRACKOPEN (segmentloc);
-"]"       return Kitsunemimi::Hanami::SegmentParser::make_BRACKCLOSE (segmentloc);
-","       return Kitsunemimi::Hanami::SegmentParser::make_COMMA (segmentloc);
-":"       return Kitsunemimi::Hanami::SegmentParser::make_ASSIGN (segmentloc);
-
-"true" return Kitsunemimi::Hanami::SegmentParser::make_BOOL_TRUE (segmentloc);
-"false" return Kitsunemimi::Hanami::SegmentParser::make_BOOL_FALSE (segmentloc);
-"null" return Kitsunemimi::Hanami::SegmentParser::make_NULLVAL (segmentloc);
+[\n]      {segmentloc.lines(1); return Kitsunemimi::Hanami::SegmentParser::make_LINEBREAK (segmentloc); }
+"version:1"    return Kitsunemimi::Hanami::SegmentParser::make_VERSION_1 (segmentloc);
+"version: 1"   return Kitsunemimi::Hanami::SegmentParser::make_VERSION_1 (segmentloc);
+"segment_type" return Kitsunemimi::Hanami::SegmentParser::make_SEGMENT_TYPE (segmentloc);
+"settings"     return Kitsunemimi::Hanami::SegmentParser::make_SETTINGS (segmentloc);
+"bricks"       return Kitsunemimi::Hanami::SegmentParser::make_BRICKS (segmentloc);
+","            return Kitsunemimi::Hanami::SegmentParser::make_COMMA (segmentloc);
+":"            return Kitsunemimi::Hanami::SegmentParser::make_ASSIGN (segmentloc);
 
 \"(\\.|[^"\\])*\" { return Kitsunemimi::Hanami::SegmentParser::make_STRING(yytext, segmentloc); }
 

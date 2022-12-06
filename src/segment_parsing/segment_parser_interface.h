@@ -40,14 +40,13 @@ public:
     void error(const Kitsunemimi::Hanami::location &location,
                const std::string& message);
 
-    bool dryRun = false;
+    SegmentMeta* output = nullptr;
 
 private:
     SegmentParserInterface(const bool traceParsing = false);
 
     static SegmentParserInterface* m_instance;
 
-    SegmentMeta* m_output = nullptr;
     std::string m_errorMessage = "";
     std::string m_inputString = "";
     std::mutex m_lock;
