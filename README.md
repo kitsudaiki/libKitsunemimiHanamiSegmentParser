@@ -1,4 +1,4 @@
-# libkitsunemimiHanamiSegmentParser
+# libKitsunemimiHanamiSegmentParser
 
 ![Github workfloat status](https://img.shields.io/github/workflow/status/kitsudaiki/libkitsunemimiHanamiSegmentParser/build-and-test/develop?label=build%20and%20test&style=flat-square)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kitsudaiki/libkitsunemimiHanamiSegmentParser?label=version&style=flat-square)
@@ -35,6 +35,9 @@ IMPORTANT: All my projects are only tested on Linux.
 Repository-Name | Version-Tag | Download-Path
 --- | --- | ---
 libKitsunemimiCommon | develop |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
+libKitsunemimiIni | develop | https://github.com/kitsudaiki/libKitsunemimiIni.git
+libKitsunemimiArgs | develop | https://github.com/kitsudaiki/libKitsunemimiArgs.git
+libKitsunemimiConfig | develop | https://github.com/kitsudaiki/libKitsunemimiConfig.git
 libKitsunemimiHanamiCommon | develop |  https://github.com/kitsudaiki/libKitsunemimiHanamiCommon.git
 
 HINT: These Kitsunemimi-Libraries will be downloaded and build automatically with the build-script below.
