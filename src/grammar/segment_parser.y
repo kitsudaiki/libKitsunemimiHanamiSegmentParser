@@ -1,10 +1,25 @@
 /**
- *  @file    segment_parser.y
+ * @file       segment_parser.y
  *
- *  @author  Tobias Anker <tobias.anker@kitsunemimi.moe>
+ * @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
  *
- *  @copyright MIT License
+ * @copyright  Apache License Version 2.0
+ *
+ *      Copyright 2022 Tobias Anker
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
  */
+
 
 %skeleton "lalr1.cc"
 
@@ -68,16 +83,19 @@ YY_DECL;
 
 %token <std::string> IDENTIFIER "identifier"
 %token <std::string> STRING "string"
-%token <std::string> STRING_PLN "string_pln"
+%token <std::string> STRING_PLN "string"
 %token <long> NUMBER "number"
 %token <double> FLOAT "float"
 
+%type  <std::string> string_ident
 %type  <Kitsunemimi::Hanami::Position> position
 %type  <Kitsunemimi::Hanami::BrickMeta> brick_settings
 
 %%
 %start startpoint;
 
+// example
+//
 // version: 1
 // segment_type: dynamic_segment
 // settings:
@@ -189,7 +207,7 @@ bricks:
     }
 
 brick_settings:
-    brick_settings "identifier" ":" "identifier" linebreaks
+    brick_settings "identifier" ":" "identifier" linebreaks_eno
     {
         if($2 == "input")
         {
@@ -210,7 +228,7 @@ brick_settings:
         $$ = $1;
     }
 |
-    brick_settings "identifier" ":" "number" linebreaks
+    brick_settings "identifier" ":" "number" linebreaks_eno
     {
         if($2 == "number_of_neurons")
         {
@@ -275,11 +293,32 @@ position:
         $$ = pos;
     }
 
+string_ident:
+    "identifier"
+    {
+        $$ = $1;
+    }
+|
+    "string"
+    {
+        $$ = $1;
+    }
+
 linebreaks:
     linebreaks "linebreak"
     {}
 |
     "linebreak"
+    {}
+
+linebreaks_eno:
+    linebreaks "linebreak"
+    {}
+|
+    "linebreak"
+    {}
+|
+    "end of file"
     {}
 %%
 
