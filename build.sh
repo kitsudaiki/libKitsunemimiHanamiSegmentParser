@@ -90,14 +90,18 @@ function get_required_kitsune_lib_repo () {
 
 #-----------------------------------------------------------------------------------------------------------------
 
-get_required_kitsune_lib_repo "libKitsunemimiCommon" "develop" 4
+get_required_kitsune_lib_repo "libKitsunemimiCommon" "develop" 8
+get_required_kitsune_lib_repo "libKitsunemimiIni" "develop" 1
+get_required_kitsune_lib_repo "libKitsunemimiArgs" "develop" 8
+get_required_kitsune_lib_repo "libKitsunemimiConfig" "develop" 8
+get_required_kitsune_lib_repo "libKitsunemimiHanamiCommon" "develop" 8
 
 #-----------------------------------------------------------------------------------------------------------------
 
 if [ $1 = "test" ]; then
-    build_kitsune_lib_repo "lKitsunemimiHanamiSegmentParser" 1 "run_tests"
+    build_kitsune_lib_repo "libKitsunemimiHanamiSegmentParser" 1 "run_tests"
 else
-    build_kitsune_lib_repo "lKitsunemimiHanamiSegmentParser" 1 ""
+    build_kitsune_lib_repo "libKitsunemimiHanamiSegmentParser" 1 ""
 fi
 
 #-----------------------------------------------------------------------------------------------------------------
