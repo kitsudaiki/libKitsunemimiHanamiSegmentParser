@@ -97,6 +97,8 @@ SegmentParserInterface::parse(SegmentMeta* result,
     parserResult = parser.parse();
     this->scan_end();
 
+    output = nullptr;
+
     // handle negative result
     if(parserResult != 0
             || m_errorMessage.size() > 0)

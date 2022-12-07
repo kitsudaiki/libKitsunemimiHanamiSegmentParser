@@ -1,5 +1,5 @@
 /**
- * @file       main.cpp
+ * @file       segment_parsestring_test.h
  *
  * @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
  *
@@ -20,13 +20,27 @@
  *      limitations under the License.
  */
 
-#include <iostream>
+#ifndef SEGMENT_PARSESTRING_TEST_H
+#define SEGMENT_PARSESTRING_TEST_H
 
-#include <segment_parsestring_test.h>
-#include <libKitsunemimiCommon/logger.h>
+#include <libKitsunemimiCommon/test_helper/memory_leak_test_helper.h>
 
-int main()
+namespace Kitsunemimi
 {
-    Kitsunemimi::initConsoleLogger(true);
-    Kitsunemimi::Hanami::Segment_ParseString_Test();
-}
+namespace Hanami
+{
+
+class Segment_ParseString_Test
+        : public Kitsunemimi::MemoryLeakTestHelpter
+{
+public:
+    Segment_ParseString_Test();
+
+private:
+    void parseString_test();
+};
+
+}  // namespace Hanami
+}  // namespace Kitsunemimi
+
+#endif // SEGMENT_PARSESTRING_TEST_H
