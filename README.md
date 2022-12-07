@@ -8,6 +8,7 @@
 
 ## Description
 
+Parser-library for the segments-templates of [KyoukoMind](https://github.com/kitsudaiki/KyoukoMind).
 
 ## Build
 
@@ -34,6 +35,7 @@ IMPORTANT: All my projects are only tested on Linux.
 Repository-Name | Version-Tag | Download-Path
 --- | --- | ---
 libKitsunemimiCommon | develop |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
+libKitsunemimiHanamiCommon | develop |  https://github.com/kitsudaiki/libKitsunemimiHanamiCommon.git
 
 HINT: These Kitsunemimi-Libraries will be downloaded and build automatically with the build-script below.
 
@@ -55,14 +57,10 @@ It create automatic a `build` and `result` directory in the directory, where you
 
 Tested on Debian and Ubuntu. If you use Centos, Arch, etc and the build-script fails on your machine, then please write me a mail and I will try to fix the script.
 
-
-## Usage
-
-
 ## Contributing
 
 Please give me as many inputs as possible: Bugs, bad code style, bad documentation and so on.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the Apache License Version 2.0 - see the [LICENSE](LICENSE) file for details
