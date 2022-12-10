@@ -62,9 +62,23 @@ struct SegmentMeta
     uint32_t version = 0;
     SegmentType segmentType = UNDEFINED_SEGMENT_TYPE;
     uint32_t maxSynapseSections = 0;
-    uint32_t synapseSegmentation = 0;
+    float synapseSegmentation = 0;
     float signNeg = 0.0;
     std::vector<BrickMeta> bricks;
+
+    BrickMeta*
+    getBrick(const std::string &name)
+    {
+        BrickMeta* tempBrick = nullptr;
+        for(uint64_t i = 0; i < bricks.size(); i++)
+        {
+            tempBrick = &bricks[i];
+            if(tempBrick->name == name) {
+                return tempBrick;
+            }
+        }
+        return tempBrick;
+    }
 };
 
 
