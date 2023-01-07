@@ -1,6 +1,6 @@
 # libKitsunemimiHanamiSegmentParser
 
-![Github workfloat status](https://img.shields.io/github/workflow/status/kitsudaiki/libKitsunemimiHanamiSegmentParser/build-and-test/develop?label=build%20and%20test&style=flat-square)
+![Github workfloat status](https://img.shields.io/github/actions/workflow/status/kitsudaiki/libKitsunemimiHanamiSegmentParser/build_test.yml?branch=develop&style=flat-square&label=build%20and%20test)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kitsudaiki/libKitsunemimiHanamiSegmentParser?label=version&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/kitsudaiki/libKitsunemimiHanamiSegmentParser?style=flat-square)
 ![C++Version](https://img.shields.io/badge/c%2B%2B-17-blue?style=flat-square)
